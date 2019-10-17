@@ -1,6 +1,9 @@
 # MCBBS-UserEnhanceScript
 这是一个增强MCBBS用户体验的脚本，可以对一些菜单进行自定义。
 
+## 作者的话
+首先我声明一下，我的代码都是到处抄来的，好了大佬们你们继续。
+
 ## 前置需要
 您必须安装一个名为Tampermonkey的Google Chrome扩展才能执行此脚本，请不要直接下载文件，因为这大概率不会对您有任何帮助。当然，如果其他浏览器有Tampermonkey插件，或者您的浏览器有类似的插件或功能，您也值得一试。以下使用教程将以Google Chrome作为浏览器，Tampermonkey作为脚本运行环境为标准。
 

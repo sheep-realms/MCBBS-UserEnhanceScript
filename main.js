@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MCBBS用户增强脚本
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  MCBBS用户增强脚本
 // @author       我是绵羊Yang_g
 // @include     http*://*.mcbbs.net*
@@ -19,7 +19,10 @@
     //在此处填写您的DIY数据
     //
     //您的UID
-    var UID = 2153967;
+    //更新: 直接读取本地cookie获取账号UID
+    const UID = document.cookie.split(';').map(item => item.split('=')).find(item => item[0].indexOf('st_p') > -1)[1].split('%')[0];
+    //获取不到UID则不继续执行后续操作
+    if (!UID) return;
     //为了更直观地表达，我们接下来把右上角那个箱子图标直接称呼为工具箱
     //工具箱项目（显示名称，可使用HTML）
     var addToolsBoxItem = [

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MCBBS用户增强脚本
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      1.1
 // @description  MCBBS用户增强脚本
 // @author       我是绵羊Yang_g
 // @include     http*://*.mcbbs.net*
@@ -16,10 +16,16 @@
 (function() {
     'use strict';
 
+    var vision = "1.1"; //版本号
+
+
+    //读取本地cookie获取账号UID - GitHub贡献者：HUANGHU1
+    const UID = document.cookie.split(';').map(item => item.split('=')).find(item => item[0].indexOf('st_p') > -1)[1].split('%')[0];
+    //获取不到UID则不继续执行后续操作
+    if (!UID) return;
+
     //在此处填写您的DIY数据
     //
-    //您的UID
-    var UID = 2153967;
     //为了更直观地表达，我们接下来把右上角那个箱子图标直接称呼为工具箱
     //工具箱项目（显示名称，可使用HTML）
     var addToolsBoxItem = [
@@ -48,7 +54,7 @@
 
     //顶部栏项目（显示名称，可使用HTML）
     var addTopBarItem = [
-        "综合讨论",
+        "矿工茶馆",
         "论坛事务",
         "<b>= 签到 =</b>"
     ];
@@ -105,6 +111,16 @@
             TextSave += ">"+addTopBarItem[i]+"</a>";
         }
         txtTopBar[b].innerHTML += TextSave;
+    }
+
+    for(b=0; b<1; b++) {
+        var txtRulesPtm = document.getElementsByClassName("ptm pnpost");
+        txtRulesPtm[b].innerHTML += "<span class=\"pipe\">|</span><a href=\"thread-7808-1-1.html\" target=\"_blank\">论坛规则</a>";
+    }
+
+    for(b=1; b<2; b++) {
+        var txtDebuginfo = document.getElementsByClassName("xs0");
+        txtDebuginfo[b].innerHTML += "<p><b>页面上已加载脚本，该页面并非原始网页</b></p><div class=\"spr_mcbbs_jslist\"><p><a href=\"https://www.mcbbs.net/thread-920721-1-1.html\"><small>MCBBS用户增强脚本 v"+vision+"</small></a> - by <a href=\"https://www.mcbbs.net/?2153967\"><small>我是绵羊Yang_g</small></a></p></div>";
     }
 
     //for(var c=0; c<1; c++) {
